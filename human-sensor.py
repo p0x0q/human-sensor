@@ -21,7 +21,7 @@ parser.add_argument(
 parser.add_argument(
     "--show",
     required=False,
-    help="show a Camera",
+    help="show a camera",
     action='store_true'
 )
 
@@ -29,14 +29,13 @@ args = parser.parse_args()
 #camera_id='2', diff_threshold='128'
 
 capture = cv2.VideoCapture(int(args.camera_id))
-ret, frame = capture.read()
-
 if args.show:
-    while(True):
-        ret, frame = capture.read()
-        cv2.imshow("Waiting for this window to close",frame)
-        if cv2.waitKey(0) & 0xFF == ord('q'):
-            break
+    ret, frame = capture.read()
+    cv2.imshow("Waiting for this window to close",frame)
+    cv2.waitKey(0)
+
+
+ret, frame = capture.read()
 
 while(True):
     im_before = frame
