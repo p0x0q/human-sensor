@@ -1,6 +1,7 @@
 import cv2
 import time
 import argparse
+import datetime
 parser = argparse.ArgumentParser(
     formatter_class=argparse.ArgumentDefaultsHelpFormatter
 )
@@ -31,6 +32,13 @@ parser.add_argument(
     action='store_true'
 )
 
+parser.add_argument(
+    "--sleep",
+    required=False,
+    default=0.2
+    help="sleep time(example: 1 = 1 second)",
+)
+
 args = parser.parse_args()
 #camera_id='2', diff_threshold='128'
 
@@ -45,7 +53,7 @@ ret, frame = capture.read()
 
 while(True):
     im_before = frame
-    time.sleep(0.2)
+    time.sleep(args.sleep)
     print("")
     ret, frame = capture.read()
     im_after = frame
@@ -55,7 +63,7 @@ while(True):
         print("diff:{}".format(diff))
     if diff >= int(args.diff_threshold):
         #Active
-        print("動きを検知しました")
+        print("{}: 動きを検知しました".format(datetime.datetime.now()))
 
 capture.release()
 cv2.destroyAllWindows()
