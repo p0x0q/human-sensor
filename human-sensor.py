@@ -35,7 +35,7 @@ parser.add_argument(
 parser.add_argument(
     "--sleep",
     required=False,
-    default=0.2
+    default=0.2,
     help="sleep time(example: 1 = 1 second)",
 )
 
