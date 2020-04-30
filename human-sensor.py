@@ -63,7 +63,7 @@ while(True):
         print("diff:{}".format(diff))
     if diff >= int(args.diff_threshold):
         #Active
-        print("{}: 動きを検知しました".format(datetime.datetime.now()))
+        print("{}: 動きを検知しました(diff:{})".format(datetime.datetime.now(),diff))
 
 capture.release()
 cv2.destroyAllWindows()
