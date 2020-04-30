@@ -24,6 +24,12 @@ parser.add_argument(
     help="show a camera",
     action='store_true'
 )
+parser.add_argument(
+    "--verbose",
+    required=False,
+    help="enable verbose mode(show diff)",
+    action='store_true'
+)
 
 args = parser.parse_args()
 #camera_id='2', diff_threshold='128'
@@ -45,6 +51,8 @@ while(True):
     im_after = frame
     im_diff = im_before.astype(int) - im_after.astype(int)
     diff = im_diff.max()
+    if args.verbose:
+        print("diff:{}".format(diff))
     if diff >= int(args.diff_threshold):
         #Active
         print("動きを検知しました")
