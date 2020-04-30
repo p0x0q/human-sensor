@@ -33,12 +33,6 @@ while(True):
     if diff >= int(args.diff_threshold):
         #Active
         print("動きを検知しました")
-        
-    """
-    cv2.imshow('frame',frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-    """
 
 capture.release()
 cv2.destroyAllWindows()
